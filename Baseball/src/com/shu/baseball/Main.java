@@ -18,6 +18,7 @@ public class Main {
 		
 		String result;
 		result = comNums.compare(plyNums1);
+		//브렌치 테스트
 		
 	}
 
