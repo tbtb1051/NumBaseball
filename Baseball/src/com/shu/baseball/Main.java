@@ -3,7 +3,7 @@ package com.shu.baseball;
 public class Main {
 	public static void main(String[] args) {
 		testnumbermatch();
-		
+		System.out.println("HI");
 		numbersTest();
 	}
 	
@@ -29,18 +29,18 @@ public class Main {
 		
 		String result;
 		result = comnumber.compare(usernumber1);
-		if(result == "STRIKE") {
-			counts.strikeCount();
-		}
-		if(result == "BALL") {
-			counts.ballCount();
-		}
-		if(result == "OUT") {
-			counts.outCount();
-		}
-		System.out.println(result);
-		System.out.println(counts.strikecount);
-		result = comnumber.compare(usernumber2);
-		System.out.println(result);		
+//		if(result == "STRIKE") {
+//			counts.strikeCount();
+//		}
+//		if(result == "BALL") {
+//			counts.ballCount();
+//		}
+//		if(result == "OUT") {
+//			counts.outCount();
+//		}
+//		System.out.println(result);
+//		System.out.println(counts.strikecount);
+//		result = comnumber.compare(usernumber2);
+//		System.out.println(result);		
 	}
 }
