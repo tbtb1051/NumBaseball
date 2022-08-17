@@ -24,8 +24,11 @@ public class Numbers {
 
 	@Override
 	public String toString() {
-		return "Numbers [numbers=" + numbers + ", strikecount=" + strikecount + ", ballcount=" + ballcount
-				+ ", outcount=" + (3-strikecount - ballcount) + ", trycount=" + trycount + "]";
+		return "결과 : " + strikecount + "STRIKE, " + ballcount + "BALL, " + (3 - strikecount - ballcount) + "OUT (시도횟수 : " + trycount + "회)";
+	}
+	
+	public String result() {
+		return "정답입니다. " + trycount + "번 만에 성공했습니다.";
 	}
 
 	private List<Number> mapNumbers(String numbers) {
@@ -64,11 +67,11 @@ public class Numbers {
 	public void runcount(ResultStatus result) {
 		if(result == ResultStatus.STRIKE) {
 			this.strikecount++;
-			this.outcount--;
+//			this.outcount--;
 		}
 		if(result == ResultStatus.BALL) {
 			this.ballcount++;
-			this.outcount--;
+//			this.outcount--;
 		} 
 	}
 
