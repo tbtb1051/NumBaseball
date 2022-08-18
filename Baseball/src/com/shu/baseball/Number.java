@@ -2,7 +2,7 @@ package com.shu.baseball;
 
 import com.shu.baseball.Result.ResultStatus;
 
-public class Number {
+public class Number { 	//[0,a][1,b],[2,c] 와 같은 위치와 값 정보를 가지는 number
 	private final int position;
 	private final int value;
 
@@ -41,13 +41,11 @@ public class Number {
 		this.value = value;
 	}
 
-	public ResultStatus compare(Number usernumber) {
+	public ResultStatus compare(Number usernumber) { // 값 비교 후 strike, ball, out 상태값 return
 		if (this.equals(usernumber)) {
 			return ResultStatus.STRIKE;
 		}
 		if (value == usernumber.value) {
-//			System.out.println(value);
-//			System.out.println(usernumber.value);
 			return ResultStatus.BALL;
 		}
 		else

@@ -10,7 +10,6 @@ public class Numbers {
 	private final List<Number> numbers;
 	int strikecount = 0;
 	int ballcount = 0;
-	int outcount = 3;
 	int trycount = 0;
 
 	public Numbers(String numbers) {
@@ -24,14 +23,14 @@ public class Numbers {
 
 	@Override
 	public String toString() {
-		return "결과 : " + strikecount + "STRIKE, " + ballcount + "BALL, " + (3 - strikecount - ballcount) + "OUT (시도횟수 : " + trycount + "회)";
+		return "결과 : " + strikecount + "S, " + ballcount + "B, " + (3 - (strikecount + ballcount)) + "O (시도횟수 : " + trycount + "회)";
 	}
 	
 	public String result() {
 		return "정답입니다. " + trycount + "번 만에 성공했습니다.";
 	}
 
-	private List<Number> mapNumbers(String numbers) {
+	private List<Number> mapNumbers(String numbers) {  // 입력받은 세자리숫자 각 포지션을 가지는 number 형태로 생성
 		List<Number> temp = new ArrayList<>();
 
 		String[] numberArray = numbers.split("");
@@ -43,8 +42,8 @@ public class Numbers {
 		return temp;
 	}
 
-	public List<Number> makeComnumber() {
-		List<Number> comNums = new ArrayList<>();// 정답숫자 생성
+	public List<Number> makeComnumber() {  // 정답 숫자 생성
+		List<Number> comNums = new ArrayList<>();
 		Random random = new Random();
 		int randomint[] = { 0, 0, 0 };
 		for (int i = 0; i < 3; i++) {
@@ -56,8 +55,9 @@ public class Numbers {
 				}
 			}
 		}
+		System.out.print("정답숫자 : ");
 		for (int j = 0; j < 3; j++) {
-			System.out.println(randomint[j]);
+			System.out.print(randomint[j]);
 			comNums.add(new Number(j, randomint[j]));
 		}
 		return comNums;
@@ -67,11 +67,9 @@ public class Numbers {
 	public void runcount(ResultStatus result) {
 		if(result == ResultStatus.STRIKE) {
 			this.strikecount++;
-//			this.outcount--;
 		}
 		if(result == ResultStatus.BALL) {
 			this.ballcount++;
-//			this.outcount--;
 		} 
 	}
 
@@ -79,21 +77,23 @@ public class Numbers {
 		this.trycount++;
 	}
 
-	public String compare(Numbers plyNums) {
+	public String compare(Numbers comNums) {
 		ResultStatus result = null;
+		comNums.strikecount = 0;
+		comNums.ballcount = 0;
 		for (Number i : this.numbers) {
-			for (Number j : plyNums.numbers) {
+			for (Number j : comNums.numbers) {
 				result = i.compare(j);
 				if (result == ResultStatus.STRIKE) {
-					plyNums.runcount(result);
+					comNums.runcount(result);
 					continue;
 				} else if (result == ResultStatus.BALL) {
-					plyNums.runcount(result);
+					comNums.runcount(result);
 					continue;
 				}
 			}
 		}
-		plyNums.tryCount();
+		comNums.tryCount();
 		return null;
 	}
 }
